@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useApp } from '../context/AppContext.jsx';
 import { ADKAR_ELEMENTS, getBarrierPoint } from '../data/adkar.js';
 
@@ -82,6 +83,229 @@ function InitiativeCard({ initiative }) {
   );
 }
 
+function AdkarCard({ el }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="rounded-2xl border overflow-hidden transition-all duration-200"
+      style={{ borderColor: el.border, backgroundColor: el.bg }}
+    >
+      {/* Header — always visible */}
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-center gap-4 p-5 text-left hover:brightness-95 transition-all"
+      >
+        <div
+          className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
+          style={{ backgroundColor: el.color }}
+        >
+          {el.letter}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="font-bold text-gray-900 text-base">{el.label}</div>
+          <div className="text-sm text-gray-600 mt-0.5">{el.shortDesc}</div>
+        </div>
+        <svg
+          viewBox="0 0 20 20"
+          className={`w-5 h-5 flex-shrink-0 text-gray-400 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+        </svg>
+      </button>
+
+      {/* Expanded content */}
+      {open && (
+        <div className="px-5 pb-6 space-y-5 border-t" style={{ borderColor: el.border }}>
+
+          {/* Definition */}
+          <div className="pt-4">
+            <p className="text-sm text-gray-700 leading-relaxed">{el.definition}</p>
+            {el.leaderNote && (
+              <p className="text-xs text-gray-500 mt-2 italic border-l-2 pl-3 mt-3" style={{ borderColor: el.color }}>
+                {el.leaderNote}
+              </p>
+            )}
+          </div>
+
+          {/* Key points */}
+          {el.keyPoints && (
+            <div>
+              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Key points</div>
+              <ul className="space-y-1.5">
+                {el.keyPoints.map((pt, i) => (
+                  <li key={i} className="flex gap-2 text-sm text-gray-700">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: el.color }} />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Outcome questions */}
+          {el.outcomeQuestions && (
+            <div>
+              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Questions to answer</div>
+              <ul className="space-y-1.5">
+                {el.outcomeQuestions.map((q, i) => (
+                  <li key={i} className="flex gap-2 text-sm text-gray-700">
+                    <span className="flex-shrink-0 font-medium" style={{ color: el.color }}>Q{i + 1}</span>
+                    {q}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* I-statements */}
+          <div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+              Check by I-statements
+            </div>
+            {el.primaryStatement && (
+              <p className="text-sm font-medium text-gray-800 mb-2 italic">"{el.primaryStatement}"</p>
+            )}
+            <ol className="space-y-1.5 list-none">
+              {el.iStatements.map((s, i) => (
+                <li key={i} className="flex gap-2 text-sm text-gray-700">
+                  <span
+                    className="flex-shrink-0 w-5 h-5 rounded-full text-white text-xs flex items-center justify-center font-medium mt-0.5"
+                    style={{ backgroundColor: el.color }}
+                  >
+                    {i + 1}
+                  </span>
+                  {s}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function AdkarReference() {
+  const [allOpen, setAllOpen] = useState(false);
+
+  return (
+    <div className="bg-white rounded-2xl border border-gray-100 p-6">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="font-semibold text-gray-800">ADKAR reference guide</h2>
+        <button
+          onClick={() => setAllOpen((o) => !o)}
+          className="text-xs text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
+        >
+          {allOpen ? 'Collapse all' : 'Expand all'}
+        </button>
+      </div>
+      <div className="space-y-3">
+        {ADKAR_ELEMENTS.map((el) => (
+          <AdkarCardControlled key={el.id} el={el} forceOpen={allOpen} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AdkarCardControlled({ el, forceOpen }) {
+  const [open, setOpen] = useState(false);
+  const isOpen = open || forceOpen;
+
+  return (
+    <div
+      className="rounded-2xl border overflow-hidden"
+      style={{ borderColor: el.border, backgroundColor: el.bg }}
+    >
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-full flex items-center gap-4 p-5 text-left hover:brightness-95 transition-all"
+      >
+        <div
+          className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
+          style={{ backgroundColor: el.color }}
+        >
+          {el.letter}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="font-bold text-gray-900 text-base">{el.label}</div>
+          <div className="text-sm text-gray-600 mt-0.5">{el.shortDesc}</div>
+        </div>
+        <svg
+          viewBox="0 0 20 20"
+          className={`w-5 h-5 flex-shrink-0 text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="currentColor"
+        >
+          <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div className="px-5 pb-6 space-y-5 border-t" style={{ borderColor: el.border }}>
+          <div className="pt-4">
+            <p className="text-sm text-gray-700 leading-relaxed">{el.definition}</p>
+            {el.leaderNote && (
+              <p className="text-xs text-gray-500 italic border-l-2 pl-3 mt-3" style={{ borderColor: el.color }}>
+                {el.leaderNote}
+              </p>
+            )}
+          </div>
+
+          {el.keyPoints && (
+            <div>
+              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Key points</div>
+              <ul className="space-y-1.5">
+                {el.keyPoints.map((pt, i) => (
+                  <li key={i} className="flex gap-2 text-sm text-gray-700">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: el.color }} />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {el.outcomeQuestions && (
+            <div>
+              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Questions to answer</div>
+              <ul className="space-y-1.5">
+                {el.outcomeQuestions.map((q, i) => (
+                  <li key={i} className="flex gap-2 text-sm text-gray-700">
+                    <span className="flex-shrink-0 font-semibold" style={{ color: el.color }}>Q{i + 1}</span>
+                    {q}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Check by I-statements</div>
+            {el.primaryStatement && (
+              <p className="text-sm font-medium text-gray-700 italic mb-3">"{el.primaryStatement}"</p>
+            )}
+            <ol className="space-y-2">
+              {el.iStatements.map((s, i) => (
+                <li key={i} className="flex gap-2.5 text-sm text-gray-700">
+                  <span
+                    className="flex-shrink-0 w-5 h-5 rounded-full text-white text-xs flex items-center justify-center font-semibold mt-0.5"
+                    style={{ backgroundColor: el.color }}
+                  >
+                    {i + 1}
+                  </span>
+                  {s}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   const { state } = useApp();
   const { initiatives } = state.data;
@@ -102,27 +326,7 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h2 className="font-semibold text-gray-800 mb-4">Quick reference — ADKAR elements</h2>
-        <div className="grid sm:grid-cols-5 gap-3">
-          {ADKAR_ELEMENTS.map((el) => (
-            <div
-              key={el.id}
-              className="rounded-xl p-3 text-center"
-              style={{ backgroundColor: el.bg, borderColor: el.border, border: '1px solid' }}
-            >
-              <div
-                className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-base mx-auto mb-2"
-                style={{ backgroundColor: el.color }}
-              >
-                {el.letter}
-              </div>
-              <div className="font-semibold text-sm text-gray-800">{el.label}</div>
-              <div className="text-xs text-gray-500 mt-1">{el.shortDesc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <AdkarReference />
     </div>
   );
 }

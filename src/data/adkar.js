@@ -14,6 +14,15 @@ export const ADKAR_ELEMENTS = [
       'Effectiveness depends on how the message is received and internalised. A trusted messenger matters as much as the message itself.',
     keyQuestion:
       'Does this person truly understand why this change is necessary right now?',
+    keyPoints: [
+      'The person telling the message matters — trust affects how awareness lands',
+      'Effectiveness depends on how the message is received and internalised',
+    ],
+    outcomeQuestions: [
+      'What is the nature of the change?',
+      'Why is the change needed?',
+      'What is the risk of not changing?',
+    ],
     iStatements: [
       'I understand why the change is happening.',
       'I understand why the change is happening RIGHT NOW.',
@@ -52,6 +61,17 @@ export const ADKAR_ELEMENTS = [
       "Desire is intrinsic. Focus on WIIFM (what's in it for me) and address fears honestly. Show the positive future state and involve the person where possible.",
     keyQuestion:
       'Has this person made a personal decision to support and participate in this change?',
+    keyPoints: [
+      "What's in it for me? — address both intrinsic and extrinsic motivations",
+      'Desire cannot be forced — the person must make their own decision to change',
+      'Address the negative consequences of not changing honestly',
+      'Show a compelling picture of the positive future state',
+    ],
+    outcomeQuestions: [
+      "What is in it for this person (WIIFM)?",
+      'What are the negative consequences of not changing?',
+      'Has this person made a personal decision to participate?',
+    ],
     iStatements: [
       'I believe in the case for this change.',
       'I am supportive of this change.',
@@ -91,6 +111,18 @@ export const ADKAR_ELEMENTS = [
       'Knowledge is often the default response to change — but it only works if Awareness and Desire are in place first. Address both the transition period and the end state.',
     keyQuestion:
       'Does this person have the knowledge and training needed to succeed during and after the transition?',
+    keyPoints: [
+      'Usually the default response to change — but A & D must come first',
+      'Affected by: existing knowledge base, learning style, and available resources',
+      'Must cover how to act DURING the transition AND AFTER the change is complete',
+      'Includes new processes, systems, tools, behaviours, skills, roles, and mindsets',
+    ],
+    outcomeQuestions: [
+      'What knowledge and skills does this person need during the transition?',
+      'What knowledge and skills will they need after the change is complete?',
+      'What gaps exist, and how will they be addressed?',
+    ],
+    primaryStatement: 'I have the knowledge I need for the change to come.',
     iStatements: [
       'I clearly understand the impact this change will have on my behaviours, processes, tools, and workflows.',
       'I have the knowledge I need to be successful while the change is being implemented.',
@@ -129,6 +161,18 @@ export const ADKAR_ELEMENTS = [
       'Knowledge does not directly lead to ability. Barriers (psychological, physical, habit, resources) can block ability even when knowledge exists. Practice, feedback, and removing barriers are key.',
     keyQuestion:
       'Can this person consistently demonstrate the required new skills and behaviours at the required performance level?',
+    keyPoints: [
+      'Knowledge does not directly lead to ability — knowing is not the same as doing',
+      'Barriers: psychological blocks, physical limitations, force of habit, lack of time or resources',
+      'Ability is demonstrated through repeated, consistent performance — not just intention',
+      'Support by providing resources, feedback, coaching, and recognising adoption',
+    ],
+    outcomeQuestions: [
+      'Can this person repeatedly demonstrate the required skills and behaviours?',
+      'What barriers are preventing them from applying what they know?',
+      'What support is needed to close the knowledge-to-ability gap?',
+    ],
+    primaryStatement: 'I am able to demonstrate the skills and/or behaviours needed to make the change.',
     iStatements: [
       'I believe I can close the knowledge-to-ability gap.',
       'I have been able to practise new skills and behaviours.',
@@ -167,6 +211,17 @@ export const ADKAR_ELEMENTS = [
       'Reinforcement prevents regression. Mix accountability with recognition. Both positive reinforcement (rewards) and absence of negative consequences matter.',
     keyQuestion:
       'Are there sufficient reinforcements in place to ensure this person continues to operate in the new way?',
+    keyPoints: [
+      'Reinforcement is required to SUSTAIN the change — without it, people revert',
+      'Influenced by: accountability, absence of negative consequences, and reward',
+      'Rewards can be simple (thank you, recognition) or formal (compensation, promotion)',
+      'Reinforcement is achieved when the desired outcomes of the change are being sustained',
+    ],
+    outcomeQuestions: [
+      'What mechanisms are in place to sustain this person in the new way of working?',
+      'Are there clear consequences for reverting to old behaviours?',
+      'Is this person being recognised and rewarded for demonstrating the change?',
+    ],
     iStatements: [
       'I have meaningful reinforcements in place to help me continue to apply and sustain the change.',
       'I know the consequences of not performing in the new way.',
