@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
-import { loadData, saveData } from '../data/storage.js';
+import { loadData, saveData, loadSyncConfig, saveSyncConfig } from '../data/storage.js';
 
 const AppContext = createContext(null);
 
@@ -7,6 +7,9 @@ const initialState = {
   page: 'home',
   params: {},
   data: loadData(),
+  syncConfig: loadSyncConfig(),
+  syncStatus: null, // null | 'syncing' | 'success' | 'error'
+  syncMessage: '',
 };
 
 function reducer(state, action) {
@@ -41,6 +44,19 @@ function reducer(state, action) {
       data.initiatives[idx].assessments.splice(action.assessmentIndex, 1);
       saveData(data);
       return { ...state, data };
+    }
+
+    case 'SET_SYNC_CONFIG': {
+      saveSyncConfig(action.config);
+      return { ...state, syncConfig: action.config };
+    }
+
+    case 'SET_SYNC_STATUS':
+      return { ...state, syncStatus: action.status, syncMessage: action.message || '' };
+
+    case 'LOAD_REMOTE_DATA': {
+      saveData(action.data);
+      return { ...state, data: action.data };
     }
 
     default:
