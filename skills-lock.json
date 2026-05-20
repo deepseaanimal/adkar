@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "com-b-diagnostic": {
+      "source": "johnpcutler/change-lenses-and-actions",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "79d6d07c4fbb75202feb4d3f31f951ad365105670e420b15c4c6189456172494"
+    }
+  }
+}
