@@ -1,0 +1,17 @@
+export const EMPLOYEES = [
+  { name: 'Talitha Graziano',    role: 'Client Experience' },
+  { name: 'Marscha Lidya',       role: 'Client Experience' },
+  { name: 'Ruth Remeeus',        role: 'Client Experience' },
+  { name: 'Diah Nurul Hidayati', role: 'Client Experience' },
+  { name: 'Yunita Ariani',       role: 'Client Experience' },
+  { name: 'Aldo Dwicahyo',       role: 'Client Experience' },
+  { name: 'Rose Onans',          role: 'Brand' },
+  { name: 'Nessa Silitonga',     role: 'Brand' },
+  { name: 'Pablo Cid',           role: 'Brand' },
+  { name: 'Metta Karina',        role: 'Brand' },
+  { name: 'Intan Pramodika',     role: 'Brand' },
+  { name: 'Lista Lestarini',     role: 'Brand' },
+  { name: 'Andini Andini',       role: 'Brand' },
+  { name: 'Dian Apriyanti',      role: 'Brand' },
+  { name: 'Geralda Bl',          role: 'Brand' },
+];

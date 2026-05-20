@@ -1,7 +1,72 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useApp } from '../context/AppContext.jsx';
 import { ADKAR_ELEMENTS, SCORE_LABELS } from '../data/adkar.js';
 import { createBlankAssessment } from '../data/storage.js';
+import { EMPLOYEES } from '../data/employees.js';
+
+function EmployeeAutocomplete({ value, onChange, onSelectEmployee }) {
+  const [query, setQuery] = useState(value);
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  const matches = query.trim().length === 0
+    ? EMPLOYEES
+    : EMPLOYEES.filter((e) => e.name.toLowerCase().includes(query.toLowerCase()));
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  function handleInput(e) {
+    setQuery(e.target.value);
+    onChange(e.target.value);
+    setOpen(true);
+  }
+
+  function handleSelect(emp) {
+    setQuery(emp.name);
+    onSelectEmployee(emp);
+    setOpen(false);
+  }
+
+  return (
+    <div ref={ref} className="relative">
+      <input
+        className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+        value={query}
+        onChange={handleInput}
+        onFocus={() => setOpen(true)}
+        placeholder="Search by name…"
+        autoComplete="off"
+      />
+      {open && matches.length > 0 && (
+        <ul className="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-xl shadow-lg max-h-56 overflow-y-auto">
+          {matches.map((emp) => (
+            <li key={emp.name}>
+              <button
+                type="button"
+                onMouseDown={() => handleSelect(emp)}
+                className="w-full text-left px-4 py-2.5 hover:bg-indigo-50 transition-colors"
+              >
+                <span className="text-sm font-medium text-gray-900">{emp.name}</span>
+                <span className="ml-2 text-xs text-gray-400">{emp.role}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {open && query.trim().length > 0 && matches.length === 0 && (
+        <div className="absolute z-20 mt-1 w-full bg-white border border-gray-200 rounded-xl shadow-lg px-4 py-2.5 text-sm text-gray-400">
+          No match — name will be saved as entered
+        </div>
+      )}
+    </div>
+  );
+}
 
 function ScoreSelector({ element, value, onChange }) {
   return (
@@ -161,11 +226,10 @@ export default function AssessmentForm() {
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Full name <span className="text-red-400">*</span>
             </label>
-            <input
-              className="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent"
+            <EmployeeAutocomplete
               value={form.name}
-              onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              placeholder="e.g. Alex Johnson"
+              onChange={(name) => setForm((f) => ({ ...f, name }))}
+              onSelectEmployee={(emp) => setForm((f) => ({ ...f, name: emp.name, role: emp.role }))}
             />
           </div>
           <div>
