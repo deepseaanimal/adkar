@@ -1,6 +1,6 @@
 import { DEFAULT_INITIATIVES } from './adkar.js';
 
-const STORAGE_KEY = 'adkar_navigator_v1';
+const STORAGE_KEY = 'adkar_navigator_v2';
 const SYNC_KEY = 'adkar_sync_config';
 
 export function loadData() {

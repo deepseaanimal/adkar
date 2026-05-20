@@ -282,7 +282,14 @@ export const DEFAULT_INITIATIVES = [
     futureState: '',
     adoptionChallenge: '',
     risks: '',
-    assessments: [],
+    assessments: [
+      { name: 'Talitha Graziano',      role: 'Client Experience', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Marscha Lidya',         role: 'Client Experience', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Ruth Remeeus',          role: 'Client Experience', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Diah Nurul Hidayati',   role: 'Client Experience', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Yunita Ariani',         role: 'Client Experience', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Aldo Dwicahyo',         role: 'Client Experience', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+    ],
   },
   {
     id: 'branding',
@@ -295,6 +302,16 @@ export const DEFAULT_INITIATIVES = [
     futureState: '',
     adoptionChallenge: '',
     risks: '',
-    assessments: [],
+    assessments: [
+      { name: 'Rose Onans',       role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Nessa Silitonga',  role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Pablo Cid',        role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Metta Karina',     role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Intan Pramodika',  role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Lista Lestarini',  role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Andini Andini',    role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Dian Apriyanti',   role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+      { name: 'Geralda Bl',       role: 'Brand', lastUpdated: null, awareness: { score: 3, notes: '' }, desire: { score: 3, notes: '' }, knowledge: { score: 3, notes: '' }, ability: { score: 3, notes: '' }, reinforcement: { score: 3, notes: '' } },
+    ],
   },
 ];
